@@ -1,10 +1,13 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { TodoEntity } from 'src/todo/entities/todo.entity';
+
 import {
   Column,
-  CreateDateColumn,
   Entity,
+  JoinColumn,
+  JoinTable,
+  OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 
 @ObjectType()
@@ -18,11 +21,7 @@ export class CategoryEntity {
   @Column()
   title: string;
 
-  @Field()
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @Field()
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @Field(() => [TodoEntity])
+  @OneToMany((type) => TodoEntity, (todo) => todo.category)
+  todos: TodoEntity[];
 }

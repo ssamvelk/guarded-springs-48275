@@ -3,35 +3,54 @@
 # ------------------------------------------------------
 
 type CategoryEntity {
-  createdAt: DateTime!
   id: ID!
   title: String!
-  updatedAt: DateTime!
+  todos: [TodoEntity!]!
 }
 
 input CreateCategoryInput {
   id: ID!
   title: String!
+  todos: [CreateTodoInput]
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
+input CreateTodoInput {
+  category: CreateCategoryInput!
+  isCompleted: Boolean = false
+  text: String!
+}
 
 type Mutation {
   createCategory(createCategory: CreateCategoryInput!): CategoryEntity!
+  createTodo(todo: CreateTodoInput!): TodoEntity!
+  deleteTodo(id: Float!): TodoEntity!
   removeCategory(id: Float!): Float!
   updateCategory(updateCategory: UpdateCategoryInput!): CategoryEntity!
+  updateTodo(todo: UpdateTodoInput!): TodoEntity!
 }
 
 type Query {
   categories: [CategoryEntity!]!
   getAllCategories: [CategoryEntity!]!
+  getAllTodos: [TodoEntity!]!
   getOneCategories(id: Float!): CategoryEntity!
+  getOneTodo(id: Float!): TodoEntity!
+}
+
+type TodoEntity {
+  category: CategoryEntity!
+  id: ID!
+  isCompleted: Boolean!
+  text: String!
 }
 
 input UpdateCategoryInput {
   id: ID!
   title: String!
+}
+
+input UpdateTodoInput {
+  id: ID!
+  isCompleted: Boolean!
+  text: String!
 }

@@ -24,9 +24,8 @@ export class CategoryService {
   }
 
   async getAllCategory(): Promise<CategoryEntity[]> {
-    // console.log(await this.categoryRepository.find());
-
-    return await this.categoryRepository.find();
+    // return await this.categoryRepository.find();
+    return await this.categoryRepository.find({ relations: { todos: true } });
   }
 
   async deleteCategory(id: number): Promise<number> {

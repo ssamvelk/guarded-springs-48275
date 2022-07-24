@@ -1,4 +1,5 @@
 import { Field, ID, InputType } from '@nestjs/graphql';
+import { TodoEntity } from 'src/todo/entities/todo.entity';
 
 @InputType()
 export class UpdateCategoryInput {
@@ -7,4 +8,7 @@ export class UpdateCategoryInput {
 
   @Field()
   title: string;
+
+  // @Field((type) => [TodoEntity!]!)
+  // todos: TodoEntity[];
 }

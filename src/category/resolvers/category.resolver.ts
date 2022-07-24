@@ -9,18 +9,19 @@ export class CategoryResolver {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Query(() => [CategoryEntity])
-  categories() {
-    return [];
-  }
-
-  @Query(() => CategoryEntity)
-  async getOneCategories(@Args('id') id: number): Promise<CategoryEntity> {
-    return await this.categoryService.getOneCategory(id);
+  async categories() {
+    // return [];
+    return await this.getAllCategories();
   }
 
   @Query(() => [CategoryEntity])
   async getAllCategories(): Promise<CategoryEntity[]> {
     return await this.categoryService.getAllCategory();
+  }
+
+  @Query(() => CategoryEntity)
+  async getOneCategories(@Args('id') id: number): Promise<CategoryEntity> {
+    return await this.categoryService.getOneCategory(id);
   }
 
   @Mutation(() => CategoryEntity)

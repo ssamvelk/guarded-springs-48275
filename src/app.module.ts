@@ -6,7 +6,8 @@ import { CategoryModule } from './category/category.module';
 import { CategoryEntity } from './category/entities/category.entity';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join } from 'path';
+import { TodoModule } from './todo/todo.module';
+import { TodoEntity } from './todo/entities/todo.entity';
 
 @Module({
   imports: [
@@ -26,12 +27,13 @@ import { join } from 'path';
       username: 'postgres',
       password: 'postgres',
       database: 'postgres',
-      entities: [CategoryEntity],
+      entities: [CategoryEntity, TodoEntity],
       synchronize: true,
       autoLoadEntities: true,
       logging: true,
     }),
     CategoryModule,
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
