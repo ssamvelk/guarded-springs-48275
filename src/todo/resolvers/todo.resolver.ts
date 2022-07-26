@@ -1,6 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { TodoEntity } from '../entities/todo.entity';
 import { CreateTodoInput } from '../inputs/create-todo.input';
+import { CreateTodoInput2 } from '../inputs/create-todo2.input';
+import { PatchTodoDTO } from '../inputs/patch-todo.input';
 import { UpdateTodoInput } from '../inputs/update-todo.input';
 import { TodoService } from '../service/todo.service';
 
@@ -10,7 +12,7 @@ export class TodoResolver {
 
   @Query(() => [TodoEntity])
   async getAllTodos() {
-    return await this.todoService.getAllCategory();
+    return await this.todoService.getAllTodos();
   }
 
   @Query(() => TodoEntity)
@@ -25,11 +27,23 @@ export class TodoResolver {
 
   @Mutation(() => TodoEntity)
   async updateTodo(@Args('todo') todo: UpdateTodoInput): Promise<TodoEntity> {
-    return await this.todoService.updateCategory(todo);
+    return await this.todoService.updateTodo(todo);
+  }
+
+  @Mutation(() => TodoEntity)
+  async patchTodo(@Args('todo') todo: PatchTodoDTO): Promise<TodoEntity> {
+    return await this.todoService.patchTodo(todo);
   }
 
   @Mutation(() => TodoEntity)
   async deleteTodo(@Args('id') id: number): Promise<number> {
     return await this.todoService.deleteTodo(id);
+  }
+
+  // ---------------------------------------------------------
+
+  @Mutation(() => TodoEntity)
+  async createTodo2(@Args('todo') todo: CreateTodoInput2): Promise<TodoEntity> {
+    return await this.todoService.createTodo2(todo);
   }
 }

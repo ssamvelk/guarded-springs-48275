@@ -19,6 +19,9 @@ import { TodoEntity } from './todo/entities/todo.entity';
       autoSchemaFile: 'schema.gql',
       // autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      cors: {
+        origin: '*',
+      },
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

@@ -9,7 +9,6 @@ type CategoryEntity {
 }
 
 input CreateCategoryInput {
-  id: ID!
   title: String!
   todos: [CreateTodoInput]
 }
@@ -20,13 +19,26 @@ input CreateTodoInput {
   text: String!
 }
 
+input CreateTodoInput2 {
+  categoryId: Float!
+  isCompleted: Boolean = false
+  text: String!
+}
+
 type Mutation {
   createCategory(createCategory: CreateCategoryInput!): CategoryEntity!
   createTodo(todo: CreateTodoInput!): TodoEntity!
+  createTodo2(todo: CreateTodoInput2!): TodoEntity!
   deleteTodo(id: Float!): TodoEntity!
+  patchTodo(todo: PatchTodoDTO!): TodoEntity!
   removeCategory(id: Float!): Float!
   updateCategory(updateCategory: UpdateCategoryInput!): CategoryEntity!
   updateTodo(todo: UpdateTodoInput!): TodoEntity!
+}
+
+input PatchTodoDTO {
+  id: ID!
+  isCompleted: Boolean!
 }
 
 type Query {

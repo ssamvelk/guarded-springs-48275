@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { CategoryEntity } from 'src/category/entities/category.entity';
 import {
   Column,
@@ -23,9 +23,13 @@ export class TodoEntity {
   @Field()
   isCompleted: boolean;
 
-  // @JoinColumn()
   @ManyToOne(() => CategoryEntity, (category) => category.todos, {
-    cascade: true,
+    // cascade: true,
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({
+    name: 'category_id',
+    referencedColumnName: 'id',
   })
   @Field(() => CategoryEntity)
   category: CategoryEntity;

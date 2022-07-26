@@ -19,7 +19,11 @@ export class CategoryService {
   }
 
   async getOneCategory(id: number): Promise<CategoryEntity> {
-    return await this.categoryRepository.findOneBy({ id });
+    // return await this.categoryRepository.findOneBy({ id });
+    return await this.categoryRepository.findOne({
+      where: { id },
+      relations: { todos: true },
+    });
     // return await this.categoryRepository.find({ where: { id } });
   }
 
