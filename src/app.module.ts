@@ -15,7 +15,7 @@ import { TodoEntity } from './todo/entities/todo.entity';
       driver: ApolloDriver,
       debug: false,
       playground: true,
-      autoSchemaFile: 'schema.gql', // true | join(process.cwd(), 'src/schema.gql')
+      autoSchemaFile: 'schema.gql',
       sortSchema: true,
       cors: {
         origin: '*',
@@ -25,7 +25,7 @@ import { TodoEntity } from './todo/entities/todo.entity';
       type: 'postgres',
       url: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
-      // host: 'localhost',
+      // host: 'localhost', // for local database
       // port: 5432,
       // username: 'postgres',
       // password: 'postgres',
