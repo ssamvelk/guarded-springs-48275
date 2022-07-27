@@ -1,13 +1,8 @@
-import { Field, ID, InputType } from '@nestjs/graphql';
-import { CategoryEntity } from 'src/category/entities/category.entity';
+import { Field, InputType } from '@nestjs/graphql';
 import { CreateCategoryInput } from 'src/category/inputs/create-category.input';
-import { UpdateCategoryInput } from 'src/category/inputs/update-category.input';
 
 @InputType()
 export class CreateTodoInput {
-  // @Field(() => ID)
-  // id: number;
-
   @Field()
   text: string;
 
@@ -16,10 +11,4 @@ export class CreateTodoInput {
 
   @Field(() => CreateCategoryInput)
   category: CreateCategoryInput;
-
-  // @Field({ defaultValue: 1 })
-  // category: number;
-
-  // @Field()
-  // category: number;
 }

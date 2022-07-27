@@ -24,7 +24,6 @@ export class TodoEntity {
   isCompleted: boolean;
 
   @ManyToOne(() => CategoryEntity, (category) => category.todos, {
-    // cascade: true,
     onDelete: 'CASCADE',
   })
   @JoinColumn({

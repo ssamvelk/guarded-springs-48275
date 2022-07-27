@@ -10,7 +10,6 @@ export class CategoryResolver {
 
   @Query(() => [CategoryEntity])
   async categories() {
-    // return [];
     return await this.getAllCategories();
   }
 

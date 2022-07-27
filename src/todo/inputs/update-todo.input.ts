@@ -10,7 +10,4 @@ export class UpdateTodoInput {
 
   @Field()
   isCompleted: boolean;
-
-  // @Field()
-  // category: number;
 }

@@ -40,8 +40,6 @@ export class TodoResolver {
     return await this.todoService.deleteTodo(id);
   }
 
-  // ---------------------------------------------------------
-
   @Mutation(() => TodoEntity)
   async createTodo2(@Args('todo') todo: CreateTodoInput2): Promise<TodoEntity> {
     return await this.todoService.createTodo2(todo);

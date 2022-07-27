@@ -5,12 +5,6 @@ export class PatchTodoDTO {
   @Field(() => ID)
   id: number;
 
-  // @Field()
-  // text?: string;
-
   @Field()
   isCompleted?: boolean;
-
-  // @Field()
-  // category?: number;
 }

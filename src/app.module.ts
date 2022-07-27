@@ -15,9 +15,7 @@ import { TodoEntity } from './todo/entities/todo.entity';
       driver: ApolloDriver,
       debug: false,
       playground: true,
-      // autoSchemaFile: true,
-      autoSchemaFile: 'schema.gql',
-      // autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: 'schema.gql', // true | join(process.cwd(), 'src/schema.gql')
       sortSchema: true,
       cors: {
         origin: '*',
