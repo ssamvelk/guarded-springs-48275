@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CategoryEntity } from 'src/category/entities/category.entity';
 import { Repository } from 'typeorm';
-import { CreateCategoryInput } from '../inputs/create-category.input';
+import {
+  CreateCategoryInput,
+  CreateCategoryInput2,
+} from '../inputs/create-category.input';
 import { UpdateCategoryInput } from '../inputs/update-category.input';
 
 @Injectable()
@@ -16,6 +19,13 @@ export class CategoryService {
     createCategoryInput: CreateCategoryInput,
   ): Promise<CategoryEntity> {
     return await this.categoryRepository.save({ ...createCategoryInput });
+  }
+
+  // категория с id
+  async createCategoryInput2(
+    createCategoryInput2: CreateCategoryInput2,
+  ): Promise<CategoryEntity> {
+    return await this.categoryRepository.save({ ...createCategoryInput2 });
   }
 
   async getOneCategory(id: number): Promise<CategoryEntity> {

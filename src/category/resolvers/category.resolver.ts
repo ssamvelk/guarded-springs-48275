@@ -1,6 +1,9 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CategoryEntity } from '../entities/category.entity';
-import { CreateCategoryInput } from '../inputs/create-category.input';
+import {
+  CreateCategoryInput,
+  CreateCategoryInput2,
+} from '../inputs/create-category.input';
 import { UpdateCategoryInput } from '../inputs/update-category.input';
 import { CategoryService } from '../services/category.service';
 
@@ -28,6 +31,15 @@ export class CategoryResolver {
     @Args('createCategory') createCategoryInput: CreateCategoryInput,
   ): Promise<CategoryEntity> {
     return await this.categoryService.createCategoryInput(createCategoryInput);
+  }
+
+  @Mutation(() => CategoryEntity)
+  async createCategory2(
+    @Args('createCategory') createCategoryInput2: CreateCategoryInput2,
+  ): Promise<CategoryEntity> {
+    return await this.categoryService.createCategoryInput2(
+      createCategoryInput2,
+    );
   }
 
   @Mutation(() => CategoryEntity)

@@ -13,6 +13,12 @@ input CreateCategoryInput {
   todos: [CreateTodoInput]
 }
 
+input CreateCategoryInput2 {
+  id: Float!
+  title: String!
+  todos: [CreateTodoInput]
+}
+
 input CreateTodoInput {
   category: CreateCategoryInput!
   isCompleted: Boolean = false
@@ -27,6 +33,7 @@ input CreateTodoInput2 {
 
 type Mutation {
   createCategory(createCategory: CreateCategoryInput!): CategoryEntity!
+  createCategory2(createCategory: CreateCategoryInput2!): CategoryEntity!
   createTodo(todo: CreateTodoInput!): TodoEntity!
   createTodo2(todo: CreateTodoInput2!): TodoEntity!
   deleteTodo(id: Float!): TodoEntity!

@@ -9,3 +9,15 @@ export class CreateCategoryInput {
   @Field((type) => [CreateTodoInput], { nullable: 'itemsAndList' })
   todos: CreateTodoInput[];
 }
+
+@InputType()
+export class CreateCategoryInput2 {
+  @Field()
+  id: number;
+
+  @Field()
+  title: string;
+
+  @Field((type) => [CreateTodoInput], { nullable: 'itemsAndList' })
+  todos: CreateTodoInput[];
+}
