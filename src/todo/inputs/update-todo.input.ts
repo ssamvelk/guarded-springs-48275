@@ -5,9 +5,9 @@ export class UpdateTodoInput {
   @Field(() => ID)
   id: number;
 
-  @Field()
-  text: string;
+  @Field({ nullable: true })
+  text?: string;
 
-  @Field()
-  isCompleted: boolean;
+  @Field({ nullable: true })
+  isCompleted?: boolean;
 }

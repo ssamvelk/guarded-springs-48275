@@ -15,12 +15,6 @@ input CreateCategoryInput {
 }
 
 input CreateTodoInput {
-  category: CreateCategoryInput!
-  isCompleted: Boolean = false
-  text: String!
-}
-
-input CreateTodoInput2 {
   categoryId: Float!
   isCompleted: Boolean = false
   text: String!
@@ -29,16 +23,9 @@ input CreateTodoInput2 {
 type Mutation {
   createCategory(createCategory: CreateCategoryInput!): CategoryEntity!
   createTodo(todo: CreateTodoInput!): TodoEntity!
-  createTodo2(todo: CreateTodoInput2!): TodoEntity!
   deleteTodo(id: Float!): TodoEntity!
-  patchTodo(todo: PatchTodoDTO!): TodoEntity!
   removeCategory(id: Float!): Float!
   updateTodo(todo: UpdateTodoInput!): TodoEntity!
-}
-
-input PatchTodoDTO {
-  id: ID!
-  isCompleted: Boolean!
 }
 
 type Query {
@@ -56,6 +43,6 @@ type TodoEntity {
 
 input UpdateTodoInput {
   id: ID!
-  isCompleted: Boolean!
-  text: String!
+  isCompleted: Boolean
+  text: String
 }

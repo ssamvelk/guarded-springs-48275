@@ -1,5 +1,4 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { CreateCategoryInput } from 'src/category/inputs/create-category.input';
 
 @InputType()
 export class CreateTodoInput {
@@ -9,6 +8,6 @@ export class CreateTodoInput {
   @Field({ defaultValue: false })
   isCompleted: boolean;
 
-  @Field(() => CreateCategoryInput)
-  category: CreateCategoryInput;
+  @Field()
+  categoryId: number;
 }
